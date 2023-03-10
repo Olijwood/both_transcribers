@@ -1,0 +1,22 @@
+{% extends 'base.html' %} 
+
+{% block title %}Blog{% endblock title %}
+
+{% block content %} 
+    {% if current_user.id == 1 %}
+    <a href="{{ url_for('transcripts.new_post') }}">Create Post</a>
+    {% endif %}
+    {% for post in posts %} 
+        <article class="media content-section">
+            <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}" alt="">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <p class="mr-2">{{ post.author.username }}</p>
+                    <small class="text-muted">{{ post.date_posted.strftime('%d-%m-%Y') }}</small>
+                </div>
+                <h2><a href="{{ url_for('transcripts.post', post_id=post.id) }}" class="article-title">{{ post.title }}</a></h2>
+                <p class="article-content">{{ post.content }}</p>
+            </div>
+        </article>
+    {% endfor %}
+{% endblock content %} 

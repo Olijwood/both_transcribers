@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <style>
+    #static_file_response{
+      width:49%;
+      float:left;
+    }
+    #deepspeech_transcription {
+      width:49%;
+      float:right;
+    }
+  </style>
+  <head>
+    <meta charset="UTF-8">
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.js">
+    </script>
+    <title align="center">File Uploader</title>
+  </head>
+  <body>
+    <div class="content-section" align="center">
+      <h4>Upload the audio file you would like to be transcribed here</h4>
+      <br>
+      <form enctype = "multipart/form-data" method="POST" > 
+        <input id="file" type="file" name="file" />
+        <button id="upload-button" type="submit">Upload file</button>
+      </form>
+    </div>
+    <br>
+    <div class="content-section">
+      <h6 align="center">Please wait for several minutes after clicking 'Upload file' to see you transcription.</h6>
+    </div>
+    <script type="text/javascript" src="/static/app.js"></script>
+  </body>
+{% endblock %}

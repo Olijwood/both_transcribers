@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ transcript.title }}{% endblock title %}
+<head>{{ share.load() }}</head>
+{% block content %} 
+    <article class="media content-section">
+        <div class="media-body">
+            <div class="article-metadata" align="center">
+                {% if transcript.user_id == current_user.id %} 
+                    <a href="{{ url_for('transcripts.update_transcript', id=transcript.id) }}" class="btn btn-secondary btn-sm mt-1 mb-1" >Edit</a>
+                    <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModalCenter">Delete</button>
+                {% endif %}
+                <h4 align="center">Share with: </h4>
+                <div class="shareon" align="center">
+                    <a class="facebook"></a>
+                    <a class="linkedin"></a>
+                    <a class="messenger" data-fb-app-id="FACEBOOK APP IDD"></a>
+                    <a class="pinterest"></a>
+                    <button class="reddit"></button>
+                    <button class="telegram"></button>
+                    <button class="twitter"></button>
+                    <button class="whatsapp"></button>
+                </div>
+            </div>
+            <h2 class="article-title">{{ transcript.title }}</h2>
+            <small><h5 class="text-muted">{{ user.username }}</h5></small>
+            <small><p class="text-muted">{{ transcript.date_created.strftime('%d-%m-%Y') }}</p></small>
+            <p class="article-content">{{ transcript.content }}</p>
+        </div>
+    </article>
+    <!-- Modal -->
+    <div class="modal fade" id="deleteModalCenter" tabindex="-1" role="dialog" aria-labelledby="deleteModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="deleteModalLongTitle">Delete Transcript?</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <form action="{{ url_for('transcripts.delete_transcript', id=transcript.id) }}" method="POST">
+                <input type="submit" class="btn btn-danger" value="Delete">
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>
+{% endblock content %}

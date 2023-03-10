@@ -1,0 +1,26 @@
+{% extends 'base.html' %} 
+
+{% block title %}About{% endblock %}
+
+{% block content %} 
+    <div class="content-section">
+        <h2 class="border-bottom mb-4" align='center'>About</h2>
+        <p>This is Transcription Service uses a Python backend running both <a href="https://openai.com/blog/whisper/">Whisper(OpenAI)</a> 
+            and <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwj61_D726v9AhUGS0EAHR1gD2kQFnoECA0QAQ&url=https%3A%2F%2Fgithub.com%2Fmozilla%2FDeepSpeech&usg=AOvVaw3VDjp5wkby9yWiGywOmvWn">DeepSpeech(Mozilla)</a> 
+            to transcribe your audio files. Your file is formatted with FFMPEG so it can be correctly handled by each AI transcriber. Once your
+            file is in the correct format, it is split into chunks so that it becomes more manageable for the Transcriber AI's to work with. This is done
+            simultaneously using <a href="https://www.ray.io">Ray</a> Parallel processing. 
+            </p>
+        <br>
+        <p>Once the file is transcribed by both of the AI's you will be redirected to a form where you can choose a title (default being the 
+            file name) and edit the content of the transcription. This is the case as it's not perfect so you may wish to make some adjustments.
+            Once you have clicked 'Save', you will be able to view the transcription in your 'Transcriptions' section in your account page.</p>
+    </div>
+
+    <div class="content-section">
+        <h3>Created by Oli Wood</h3>
+        <a href="{{ url_for('transcripts.blog') }}">Features, Future Updates and What I have learned.</a>
+        <br>
+        <a href="https://github.com/Olijwood/both_transcribers.git">GitHub Repository for this project</a>
+    </div>
+{% endblock %}

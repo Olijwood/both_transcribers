@@ -1,0 +1,36 @@
+{% extends 'base.html' %} 
+
+{% block title %}Account Transcripts{% endblock %}
+
+{% block content %} 
+    <div class="content-section">
+        <div class="media" align="center">
+            <img src="{{ image_file }}" class="rounded-circle account-img">
+            <div class="media-body">
+                <h2 class="account-heading">{{ current_user.username }}</h2>
+                <p class="text-secondary">{{ current_user.email }}</p>
+            </div>
+        </div>
+    <nav class="navbar border-bottom mb-4">
+        <a href="{{ url_for('users.account') }}" class="nav-item nav-link">Account Info</a>
+        <a href="{{ url_for('transcripts.account_transcripts') }}" class="nav-item nav-link">Your Transcripts</a>
+    </nav>
+    <h3 align="center">Transcripts</h3>
+    <div class="transcripts-list">
+        {% for transcript in transcripts %} 
+            <div class="card">
+                <h4><a href="{{ url_for('transcripts.transcript', id=transcript.id) }}">{{ transcript.title }}</a></h4>
+                <small><p>{{ transcript.date_created.strftime('%d-%m-%Y') }}</p></small>
+            </div>
+        {% endfor %}
+    </div>
+</div>  
+
+    <style>
+        .transcripts-list{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 20px;
+        }
+    </style>
+{% endblock %}
