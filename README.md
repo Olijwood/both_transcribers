@@ -33,6 +33,4 @@ Contributions are welcome! Feel free to fork the repository, make improvements, 
 ## Author
 This transcriber website is maintained by **Oliver Wood**. Connect with me on [**LinkedIn**](https://www.linkedin.com/in/olijwood)!
 
-## 
-
 Thank you for visiting the Transcriber website's GitHub Repository!
